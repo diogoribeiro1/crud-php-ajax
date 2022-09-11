@@ -23,6 +23,31 @@ $(function (){
     })
 })
 
+$(function (){
+    $("#btnEditar").on("click", function (){
+
+        var id = document.getElementById("inputIdEditar").value;
+        var nome = document.getElementById("inputNomeEditar").value;
+        var dataInput = document.getElementById("inputDataEditar").value;
+        var local = document.getElementById("inputLocalEditar").value;
+        var methodRequest = 'PUT';
+
+        $.ajax({
+            url: "/src/controller/EventoController.php",
+            method: 'POST',
+            data: {id, nome, dataInput, local, methodRequest},
+            type: 'json',
+            success: function () {
+                alert('Editado com Sucesso!')
+                document.location.reload(true);
+            },
+            error: function () {
+                alert('error');
+            }
+        })
+    })
+})
+
 function deletarEvento(id)
 {
     result = confirm("Deseja realmente apagar?");
@@ -36,7 +61,7 @@ function deletarEvento(id)
             data: {jsonId, methodRequest},
             type: 'json',
             success: function () {
-                alert('DELETADO COM SUCESSO!')
+                alert('Deletado com Sucesso!')
                 document.location.reload(true);
             },
             error: function () {
@@ -66,6 +91,7 @@ function getEventoById(id)
 function setarInputs(evento)
 {
     evento.map(function (value){
+        document.getElementById('inputIdEditar').value = value.id;
         document.getElementById('inputNomeEditar').value = value.nome;
         document.getElementById('inputDataEditar').value = value.data;
         document.getElementById('inputLocalEditar').value = value.local;

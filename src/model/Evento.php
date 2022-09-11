@@ -26,6 +26,11 @@ class Evento
         return $this->dao->selectEventoById($id);
     }
 
+    public function updateEvento(Evento $eventModel)
+    {
+        $this->dao->updateEvento($eventModel);
+    }
+
     public function deletarEvento($id)
     {
         $this->dao->deleteEvento($id);

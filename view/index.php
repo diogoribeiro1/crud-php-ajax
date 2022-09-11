@@ -44,7 +44,7 @@ session_start();
                     <td><?=$value['local'];?></td>
                     <td><button type="button" class="btn btn-secondary">CONVIDADOS</button></td>
                     <td><button type="button" class="btn btn-danger" onclick="deletarEvento(<?=$value['id']?>)">DELETAR</button></td>
-                    <td><button type="button" id="btnEditar" class="btn btn-primary" onclick="getEventoById(<?=$value['id']?>)">EDITAR</button></td>
+                    <td><button type="button" class="btn btn-primary" onclick="getEventoById(<?=$value['id']?>)">EDITAR</button></td>
                 </div>
             </tr>
         <?php endforeach;?>
@@ -62,6 +62,10 @@ session_start();
             <div class="modal-body">
                 <form METHOD="POST" class="row g-3">
                     <div class="col-md-6">
+                        <label for="inputIdEditar" class="form-label">Id</label>
+                        <input type="text" class="form-control" id="inputIdEditar" name="inputIdEditar" readonly>
+                    </div>
+                    <div class="col-md-6">
                         <label for="inputNomeEditar" class="form-label">Evento</label>
                         <input type="text" class="form-control" id="inputNomeEditar" name="inputNomeEditar">
                     </div>
@@ -76,7 +80,7 @@ session_start();
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                <button type="submit" class="btn btn-primary">Editar</button>
+                <button type="button" class="btn btn-primary" id="btnEditar">Editar</button>
             </div>
             </form>
         </div>

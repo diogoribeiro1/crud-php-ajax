@@ -6,9 +6,12 @@ include_once '/home/diogo/PhpstormProjects/crud-php/src/model/Evento.php';
             if ($_POST['methodRequest'] == 'POST')
             {
                 saveEvent();
-            }else
+            }else if ($_POST['methodRequest'] == 'DELETE')
             {
                 deleteEvent();
+            }else if ($_POST['methodRequest'] == 'PUT')
+            {
+                updateEvent();
             }
             break;
         case 'GET':
@@ -27,24 +30,34 @@ include_once '/home/diogo/PhpstormProjects/crud-php/src/model/Evento.php';
         $eventoModel->salvarEvento($eventoModel);
     }
 
-    function deleteEvent()
+    function getEventById()
     {
         $eventoModel = new Evento();
-        $eventoModel->deletarEvento($_POST['jsonId']);
+
+        $evento = $eventoModel->selecionarEventoPeloId($_GET['id']);
+
+        $evento = json_encode($evento);
+
+        echo $evento;
     }
 
     function updateEvent()
     {
         $eventoModel = new Evento();
-        $eventoModel->deletarEvento($_POST['jsonId']);
+
+        $eventoModel->id = $_POST['id'];
+        $eventoModel->nome = $_POST['nome'];
+        $eventoModel->data = $_POST['dataInput'];
+        $eventoModel->local = $_POST['local'];
+
+        $eventoModel->updateEvento($eventoModel);
     }
 
-    function getEventById()
+    function deleteEvent()
     {
         $eventoModel = new Evento();
-        $evento = $eventoModel->selecionarEventoPeloId($_GET['id']);
-        $evento = json_encode($evento);
-        echo $evento;
+
+        $eventoModel->deletarEvento($_POST['jsonId']);
     }
 
 }

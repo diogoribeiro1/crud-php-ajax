@@ -55,13 +55,15 @@ class EventoDao extends Conexao
         $stmt->execute();
     }
 
-    public function updateEvento($id)
+    public function updateEvento(Evento $eventModel)
     {
-        $sql = "UPDATE FROM $this->table WHERE id = ? ";
+        $sql = "UPDATE $this->table SET nome = ?, data = ?, local = ? WHERE id = ? ";
 
         $stmt = $this->conexao->prepare($sql);
-        $stmt->bindValue(1, $id);
-
+        $stmt->bindValue(1, $eventModel->nome);
+        $stmt->bindValue(2, $eventModel->data);
+        $stmt->bindValue(3, $eventModel->local);
+        $stmt->bindValue(4, $eventModel->id);
         $stmt->execute();
     }
 
