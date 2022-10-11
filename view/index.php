@@ -2,10 +2,8 @@
 include_once '/home/diogo/PhpstormProjects/crud-php/src/model/Evento.php';
 session_start();
 
-    $eventoModel = new Evento();
-    $data = $eventoModel->selecionarTodosEventos();
-
-
+    // $eventoModel = new Evento();
+    // $data = $eventoModel->selecionarTodosEventos();
 ?>
 
 <!doctype html>
@@ -29,25 +27,12 @@ session_start();
             <th scope="col">Nome</th>
             <th scope="col">Data</th>
             <th scope="col">Local</th>
-            <th scope="col">Convidados</th>
             <th scope="col">Deletar</th>
             <th scope="col">Editar</th>
         </tr>
         </thead>
-        <tbody>
-        <?php  foreach($data as $key => $value): ?>
-            <tr>
-                <div class="row">
-                    <td><?=$value['id'];?></td>
-                    <td><?=$value['nome']?></td>
-                    <td><?=$value['data']?></td>
-                    <td><?=$value['local'];?></td>
-                    <td><button type="button" class="btn btn-secondary">CONVIDADOS</button></td>
-                    <td><button type="button" class="btn btn-danger" onclick="deletarEvento(<?=$value['id']?>)">DELETAR</button></td>
-                    <td><button type="button" class="btn btn-primary" onclick="getEventoById(<?=$value['id']?>)">EDITAR</button></td>
-                </div>
-            </tr>
-        <?php endforeach;?>
+        <tbody id="tbody">
+        
         </tbody>
     </table>
 </div>

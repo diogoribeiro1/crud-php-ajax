@@ -1,3 +1,29 @@
+$(document).ready(function () {
+
+    var methodRequest = 'GET_ALL';
+
+    $.ajax({
+        url: "/src/controller/EventoController.php",
+        type: 'GET',
+        data:{methodRequest},
+        success: function (result) {
+            var lista = JSON.parse(result);
+            listarEventos(lista);
+        },
+        error: function (error) {
+            alert(error);
+        }
+    })
+});
+
+function listarEventos(lista) {
+
+    var tbody = document.getElementById("tbody");
+
+    lista.map((evento) => {
+        $("#tbody").append("<tr> <div class='row'> <td>" + evento.id + "</td> <td>" + evento.nome + "</td> <td>" + evento.data + " </td> <td>" + evento.local + " </td> <td><button type=\"button\" class=\"btn btn-danger\" onclick=\"deletarEvento(" + evento.id + ")\">Delete</button></td> <td><button type=\"button\" class=\"btn btn-primary\" onclick=\"getEventoById(" + evento.id + ")\" data-bs-toggle=\"modal\" data-bs-target=\"#editarModal\">Edit</button></td> </div></tr>");
+    })
+}
 
 $(function (){
     $("#btnSalvar").on("click", function (){
@@ -73,10 +99,12 @@ function deletarEvento(id)
 
 function getEventoById(id)
 {
+    var methodRequest = 'GET_BY_ID';
+
     $.ajax({
         url: "/src/controller/EventoController.php",
         method: 'GET',
-        data: {id},
+        data: {id, methodRequest},
         type: 'json',
         success: function (result) {
             evento = JSON.parse(result);

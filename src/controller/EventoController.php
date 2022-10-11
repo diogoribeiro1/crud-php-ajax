@@ -6,16 +6,27 @@ include_once '/home/diogo/PhpstormProjects/crud-php/src/model/Evento.php';
             if ($_POST['methodRequest'] == 'POST')
             {
                 saveEvent();
-            }else if ($_POST['methodRequest'] == 'DELETE')
+            }
+            else if ($_POST['methodRequest'] == 'DELETE')
             {
                 deleteEvent();
-            }else if ($_POST['methodRequest'] == 'PUT')
+            }
+            else if ($_POST['methodRequest'] == 'PUT')
             {
                 updateEvent();
             }
             break;
         case 'GET':
-            getEventById();
+
+            if ($_GET['methodRequest'] == 'GET_ALL')
+            {
+                getAllEvents();
+            }
+            else if ($_GET['methodRequest'] == 'GET_BY_ID')
+            {
+                getEventById();
+            }
+            
             break;
     }
 
@@ -28,6 +39,17 @@ include_once '/home/diogo/PhpstormProjects/crud-php/src/model/Evento.php';
         $eventoModel->local = $_POST['local'];
 
         $eventoModel->salvarEvento($eventoModel);
+    }   
+
+    function getAllEvents()
+    {
+        $eventoModel = new Evento();
+
+        $eventos = $eventoModel->selecionarTodosEventos();
+
+        $eventos = json_encode($eventos);
+
+        echo $eventos;
     }
 
     function getEventById()
