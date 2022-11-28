@@ -2,8 +2,6 @@
 include_once '/home/diogo/PhpstormProjects/crud-php/src/model/Evento.php';
 session_start();
 
-    // $eventoModel = new Evento();
-    // $data = $eventoModel->selecionarTodosEventos();
 ?>
 
 <!doctype html>
