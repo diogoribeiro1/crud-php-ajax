@@ -1,5 +1,5 @@
 <?php
-include_once '/home/diogo/PhpstormProjects/crud-php/src/dao/evento/EventoDao.php';
+include_once dirname(__FILE__) . '/../dao/evento/EventoDao.php';
 
 class Evento
 {

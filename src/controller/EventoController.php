@@ -1,5 +1,5 @@
 <?php
-include_once '/home/diogo/PhpstormProjects/crud-php/src/model/Evento.php';
+include_once dirname(__FILE__) . '/../model/Evento.php';
 {
     switch ($_SERVER['REQUEST_METHOD']) {
         case 'POST':

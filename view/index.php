@@ -1,6 +1,6 @@
 <?php
-include_once '/home/diogo/PhpstormProjects/crud-php/src/model/Evento.php';
 session_start();
+include_once dirname(__FILE__) . '/../src/model/Evento.php';
 
 ?>
 
@@ -103,6 +103,6 @@ session_start();
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
-<script src= "js/script.js"></script>
+<script src= "view\js\script.js"></script>
 </body>
 </html>

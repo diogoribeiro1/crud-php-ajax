@@ -1,5 +1,5 @@
 <?php
-include_once '/home/diogo/PhpstormProjects/crud-php/src/dao/Conexao.php';
+include_once dirname(__FILE__) . '/../Conexao.php';
 
 class EventoDao extends Conexao
 {

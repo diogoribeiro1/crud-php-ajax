@@ -3,7 +3,7 @@ class Conexao
 {
     protected $conexao;
 
-    const HOST = 'localhost:3306', DATABASE= 'eventos_db', USER = 'root', PASS = '123';
+    const HOST = 'localhost:3306', DATABASE= 'eventos_db', USER = 'root', PASS = '1234';
 
     public function __construct()
     {
